@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/scheduleFragment">
+
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.haii.schedulemanager.schedule.ScheduleFragment"
+        android:label="Schdeule fragment"
+        tools:layout="@layout/fragment_schedule">
+        <action
+            android:id="@+id/action_scheduleFragment_to_subFragment"
+            app:destination="@id/subFragment" />
+        <action
+            android:id="@+id/action_scheduleFragment_to_noticeFragment"
+            app:destination="@id/noticeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subFragment"
+        android:name="com.haii.schedulemanager.SubFragment"
+        android:label="Sub fragment"
+        tools:layout="@layout/fragment_sub">
+        <action
+            android:id="@+id/action_subFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
+
+        <action
+            android:id="@+id/action_subFragment_to_noticeFragment"
+            app:destination="@id/noticeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.haii.schedulemanager.notice.NoticeFragment"
+        android:label="Notice"
+        tools:layout="@layout/fragment_notice">
+        <action
+            android:id="@+id/action_noticeFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
+
+    </fragment>
+
+</navigation>
