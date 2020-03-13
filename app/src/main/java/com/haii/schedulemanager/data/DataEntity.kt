@@ -13,20 +13,8 @@ data class ScheduleItem(val id: Int = 0,
                        val place: String = "",
                        val title: String = "",
                        val participant :String="",
-                       val viewType : Int=1)
+                       val viewType : Int=0)
 
 
 
-//data class NoticeItem(val notice :String="")
-
-
-data class NoticeItem(
-    val birthday: String,
-    val createdDate: String,
-    val gender: String,
-    val id: Int,
-    val image: String,
-    val isDeleted: Int,
-    val job: String,
-    val name: String
-)
+data class NoticeItem(val noticeText :String="")

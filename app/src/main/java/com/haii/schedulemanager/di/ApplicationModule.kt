@@ -63,15 +63,15 @@ object ApplicationModule {
 
 
     @JvmStatic
-        @Singleton
-        @Provides
-        fun provideTaskNetwork() : ScheduleNetwork {
-            return Retrofit.Builder()
-                .baseUrl("http://192.168.0.35:5000/") //"http://10.0.2.35:5000/"
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(provideOkhttp())
-                .build()
-                .create(ScheduleNetwork::class.java)
+    @Singleton
+    @Provides
+    fun provideTaskNetwork() : ScheduleNetwork {
+        return Retrofit.Builder()
+            .baseUrl("http://192.168.0.35:5000/") //"http://10.0.2.35:5000/"  //10 or 35
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(provideOkhttp())
+            .build()
+            .create(ScheduleNetwork::class.java)
     }
 
 

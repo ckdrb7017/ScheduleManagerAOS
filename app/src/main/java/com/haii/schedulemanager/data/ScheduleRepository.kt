@@ -21,8 +21,10 @@ package com.haii.schedulemanager.data
  */
 interface ScheduleRepository {
 
-    suspend fun getWeek(): ScheduleEntity
+    suspend fun getWeek(groupName : String): List<ScheduleItem>
 
     suspend fun getNotice() : NoticeItem
+
+    suspend fun getScheduleById(id : Int): ScheduleItem
 
 }

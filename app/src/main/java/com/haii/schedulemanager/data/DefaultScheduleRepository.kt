@@ -33,37 +33,55 @@ class DefaultScheduleRepository @Inject constructor(
 ) : ScheduleRepository {
 
 
-    private var data = ScheduleEntity(ScheduleItem(),0)
+    lateinit var weekSchedules : List<ScheduleItem>
+    lateinit var oneSchedule : ScheduleItem
 
 
-    override suspend fun getWeek(): ScheduleEntity {
+    override suspend fun getWeek(groupName:String): List<ScheduleItem> {
         withContext(ioDispatcher){
-            val request = scheduleModel.getWeek()
+            val request = scheduleModel.getWeek(groupName)
             val response = request.await()
 
-            if(response.body !=null){
-                Log.d("TAG",""+response.toString())
-                data = response
+            if(response !=null){
+                Log.d("TAG","getWeek : "+response.toString())
+                weekSchedules = response
+            }else{
+                Log.d("TAG","getWeek : Null"+response.toString())
             }
 
 
         }
-        return data
+        return weekSchedules
 
     }
 
     override suspend fun getNotice(): NoticeItem {
 
         Log.d("TAG","getNotice")
-        var notice =NoticeItem("","","",0,"",0,"","")
+        var notice = listOf<NoticeItem>()
         withContext(ioDispatcher){
             val request = scheduleModel.getNotice()
             val response = request.await()
             notice = response
-            notice = NoticeItem("","","",0,"",0,"","")
+            Log.d("TAG",""+notice)
+        }
+        return notice.get(0)
+    }
+
+
+    override suspend fun getScheduleById(id : Int): ScheduleItem {
+        withContext(ioDispatcher){
+            val request = scheduleModel.getScheduleById(id)
+            val response = request.await()
+
+            if(response !=null){
+                Log.d("TAG","oneSchedule : "+response.toString())
+                oneSchedule = response.get(0)
+            }
+
 
         }
-        return notice
+        return oneSchedule
     }
 
 

@@ -49,13 +49,12 @@ class ScheduleFragment : DaggerFragment() {
 
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
         manager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        scheduleAdapter = ScheduleAdapter()
+        scheduleAdapter = ScheduleAdapter(context)
         scheduleListView.layoutManager = manager
         scheduleListView.adapter = scheduleAdapter
         progressBar.visibility=View.VISIBLE
         init()
-        viewModel.getWeek()
-
+        viewModel.getWeek("Haii")
     }
 
     private fun init(){
@@ -67,6 +66,11 @@ class ScheduleFragment : DaggerFragment() {
             progressBar.visibility = View.GONE
 
         })
+
+        viewModel.oneSchedule.observe(this, Observer {
+            Log.d("TAG",""+it.toString())
+        })
+
 
     }
 

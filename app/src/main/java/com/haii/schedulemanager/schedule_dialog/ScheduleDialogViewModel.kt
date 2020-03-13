@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.haii.schedulemanager.schedule
+package com.haii.schedulemanager.schedule_dialog
 
 import android.util.Log
 import androidx.annotation.DrawableRes
@@ -23,6 +23,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.haii.schedulemanager.data.NoticeItem
 
 import com.haii.schedulemanager.data.ScheduleItem
 import com.haii.schedulemanager.data.ScheduleRepository
@@ -33,14 +34,14 @@ import javax.inject.Inject
 /**
  * ViewModel for the task list screen.
  */
-class ScheduleViewModel @Inject constructor(
+class ScheduleDialogViewModel @Inject constructor(
     private val scheduleRepository: ScheduleRepository
 ) : ViewModel() {
 
 
-    private val _item = MutableLiveData<List<ScheduleItem>>()
-    val item: LiveData<List<ScheduleItem>> = _item
-
+    private val _oneSchedule = MutableLiveData<ScheduleItem>()
+    val oneSchedule: LiveData<ScheduleItem> = _oneSchedule
+    lateinit var mOneSchedule : ScheduleItem
     /*
     private val _items = MutableLiveData<List<ScheduleItem>>().apply { value = emptyList() }
     val items: LiveData<List<ScheduleItem>> = _items
@@ -50,32 +51,16 @@ class ScheduleViewModel @Inject constructor(
         it.isEmpty()
     }*/
 
-    private val _oneSchedule = MutableLiveData<ScheduleItem>()
-    val oneSchedule: LiveData<ScheduleItem> = _oneSchedule
-    lateinit var mOneSchedule : ScheduleItem
-
-
-    fun getWeek(groupName : String){
-
-        viewModelScope.launch {
-            val itemList = scheduleRepository.getWeek(groupName)
-            if(itemList.isEmpty()){
-                Log.d("TAG","Null")
-                _item.value=null
-            }else{
-                _item.value = itemList
-            }
-        }
-    }
 
     fun getScheduleById(id : Int){
 
         viewModelScope.launch {
-
             mOneSchedule = scheduleRepository.getScheduleById(id)
             _oneSchedule.value = mOneSchedule
 
-            Log.d("TAG",""+mOneSchedule)
+            Log.d("TAG",""+_oneSchedule.value)
         }
     }
+
+
 }

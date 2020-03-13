@@ -30,7 +30,8 @@ import javax.inject.Singleton
         ApplicationModule::class,
         AndroidSupportInjectionModule::class,
         ScheduleModule::class,
-        NoticeModule::class
+        NoticeModule::class,
+        ScheduleDialogModule::class
     ])
 interface ApplicationComponent : AndroidInjector<ScheduleApplication> {
 

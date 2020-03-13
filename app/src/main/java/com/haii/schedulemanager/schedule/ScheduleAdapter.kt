@@ -1,6 +1,7 @@
 package com.haii.schedulemanager.schedule
 
 import android.content.Context
+import android.graphics.Typeface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,10 @@ import com.haii.schedulemanager.R
 import com.haii.schedulemanager.data.ScheduleItem
 
 
-class ScheduleAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ScheduleAdapter(context: Context?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     lateinit var view : View
     var itemList =  arrayListOf<ScheduleItem>()
+    val mContext= context
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -37,9 +39,11 @@ class ScheduleAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int = itemList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val juaTypeface = Typeface.createFromAsset(mContext?.assets, "font/jua.ttf");
 
         if(holder is HeaderViewHolder){
             holder.startDay.text = itemList.get(position).startDay
+            holder.startDay.setTypeface(juaTypeface);
         }
         else if(holder is ItemViewHolder){
             holder.time.text = itemList.get(position).startTime+"~"+itemList.get(position).endTime

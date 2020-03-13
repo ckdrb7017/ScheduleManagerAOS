@@ -54,11 +54,11 @@ class NoticeViewModel @Inject constructor(
 
     fun getNotice(){
 
-        var notice = NoticeItem("","","",0,"",0,"","")
+        var notice = NoticeItem("")
 
         viewModelScope.launch {
             notice = scheduleRepository.getNotice()
-            _notice.value = notice.birthday
+            _notice.value = notice.noticeText
         }
     }
 
