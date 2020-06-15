@@ -5,13 +5,15 @@
 # 프로젝트 설명
 
 ### 개발환경
-   - Android Studio 3.6
+   - Android Studio : 3.6.2
+   - Language : Kotlin
+   - Version Control : Git
    
-
-### Project Structure
+   
+### 프로젝트구조
 
  - Architecture Model : MVVM
  
- - Architecture Components : Retrofit2, Okhttp3, Coroutine, LiveData, Dagger2, Room, ViewBinding
+ - Architecture Component : Retrofit2, Okhttp3, Coroutine, LiveData, Dagger2, Room, ViewBinding
  
- - Libraries : Glide, ViewPager2, Exoplayer2
+ - Library : Glide, ViewPager2, Exoplayer2
