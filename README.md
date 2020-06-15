@@ -42,4 +42,4 @@
   # Bug & Fix
    1. recyclerview item notify 할때 payload를 설정하지 않으면 기존의 뷰 위에 새로운 뷰가 생성된다. 기존의 뷰를 가리키던 변수는 이 현상때문에 엉뚱한 주소를 가리키고 있어 뷰를 바인딩 할때 payload를 걸어서 재생성이 아닌 업데이트를 시켜야 한다.
    
-   2. 불필요한 resource를 줄이기 위해 shrinkresources 기능을 사용하면 네트워크로 응답한 결과를 매핑하지 못하는 현상 발생. 이유는 컴파일시 참조되지 않는 객체에 대해서 해당 코드를 지우므로 일어난다. 코드축소의 대상에서 제외시키려면 해당 모델클래스에 @Keep 어노테이션을 추가해야한다. [https://stackoverflow.com/questions/60314747/minifyenabled-true-and-shrinkresources-true-in-release-build-retrofit-apis-are]
+   2. 불필요한 resource를 줄이기 위해 shrinkresources 기능을 사용하면 네트워크로 응답한 결과를 매핑하지 못하는 현상 발생. 이유는 컴파일시 참조되지 않는 객체에 대해서 해당 코드를 지우므로 일어난다. 코드축소의 대상에서 제외시키려면 해당 모델클래스에 @Keep 어노테이션을 추가해야한다. https://stackoverflow.com/questions/60314747/minifyenabled-true-and-shrinkresources-true-in-release-build-retrofit-apis-are
