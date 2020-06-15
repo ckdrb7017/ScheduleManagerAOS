@@ -1,7 +1,8 @@
 # 이팔청춘
 
  어르신들의 회상을 통한 치료서비스 프로젝트
- 
+ <br/> <br/>
+
 
 # 프로젝트 설명
 
@@ -12,7 +13,7 @@
    - Language : Kotlin
    
    - Version Control : Git
-   
+ <br/>  
    
    
 ### 프로젝트구조
@@ -22,7 +23,7 @@
  - Architecture Component : Retrofit2, Okhttp3, Coroutine, LiveData, Dagger2, Room, ViewBinding
  
  - Library : Glide, ViewPager2, Exoplayer2
- 
+  <br/>
  
  
  # Release Version
@@ -38,9 +39,7 @@
    
   
   ### Production
-  
-  
-  
+ <br/>
   
   # Bug & Fix
    1. recyclerview item notify 할때 payload를 설정하지 않으면 기존의 뷰 위에 새로운 뷰가 생성된다. 기존의 뷰를 가리키던 변수는 이 현상때문에 엉뚱한 주소를 가리키고 있어 뷰를 바인딩 할때 payload를 걸어서 재생성이 아닌 업데이트를 시켜야 한다.
