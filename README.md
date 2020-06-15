@@ -1,12 +1,16 @@
 # 이팔청춘
+
  어르신들의 회상을 통한 치료서비스 프로젝트
  
 
 # 프로젝트 설명
 
 ### 개발환경
+
    - Android Studio : 3.6.2
+   
    - Language : Kotlin
+   
    - Version Control : Git
    
    
@@ -22,6 +26,7 @@
  # Release Version
  
   ### Test
+  
    - 1.0.0(2020.05.17) : ui 완성 버전(서버작업 연동x)
   
    - 1.0.1(2020.05.29) : 초기 개발 완성버전
