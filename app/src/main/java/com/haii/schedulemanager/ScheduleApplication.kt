@@ -16,9 +16,12 @@
 
 package com.haii.schedulemanager
 
+import com.haii.schedulemanager.data.DefaultScheduleRepository
 import com.haii.schedulemanager.di.DaggerApplicationComponent
+import com.haii.schedulemanager.schedule.ScheduleViewModel
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
+import javax.inject.Inject
 
 
 /**
@@ -27,6 +30,11 @@ import dagger.android.support.DaggerApplication
  * Also, sets up Timber in the DEBUG BuildConfig. Read Timber's documentation for production setups.
  */
 open class ScheduleApplication : DaggerApplication() {
+
+    @Inject
+    lateinit var defaultRepository: DefaultScheduleRepository
+    lateinit var viewModel: ScheduleViewModel
+
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
 
         return DaggerApplicationComponent.factory().create(applicationContext)
@@ -34,6 +42,22 @@ open class ScheduleApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        //if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+        instance = this
+        viewModel = ScheduleViewModel(defaultRepository)
+    }
+
+    fun getViewmodel() :ScheduleViewModel{
+        return viewModel
+    }
+
+    companion object {
+        private var instance: ScheduleApplication? = null
+
+        val globalApplicationContext: ScheduleApplication
+            get() {
+                checkNotNull(instance) {}
+                return instance!!
+            }
+
     }
 }

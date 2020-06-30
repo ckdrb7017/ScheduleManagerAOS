@@ -27,11 +27,9 @@ import javax.inject.Inject
 
 
 class DefaultScheduleRepository @Inject constructor(
-
     @ScheduleNetworkSource private val scheduleModel: ScheduleModel,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ScheduleRepository {
-
 
     lateinit var weekSchedules : List<ScheduleItem>
     lateinit var oneSchedule : ScheduleItem

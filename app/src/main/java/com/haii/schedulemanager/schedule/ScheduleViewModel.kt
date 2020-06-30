@@ -30,9 +30,6 @@ import kotlinx.coroutines.launch
 import java.util.ArrayList
 import javax.inject.Inject
 
-/**
- * ViewModel for the task list screen.
- */
 class ScheduleViewModel @Inject constructor(
     private val scheduleRepository: ScheduleRepository
 ) : ViewModel() {
@@ -41,22 +38,15 @@ class ScheduleViewModel @Inject constructor(
     private val _item = MutableLiveData<List<ScheduleItem>>()
     val item: LiveData<List<ScheduleItem>> = _item
 
-    /*
-    private val _items = MutableLiveData<List<ScheduleItem>>().apply { value = emptyList() }
-    val items: LiveData<List<ScheduleItem>> = _items
-
-    // This LiveData depends on another so we can use a transformation.
-    val empty: LiveData<Boolean> = Transformations.map(_items) {
-        it.isEmpty()
-    }*/
-
     private val _oneSchedule = MutableLiveData<ScheduleItem>()
     val oneSchedule: LiveData<ScheduleItem> = _oneSchedule
     lateinit var mOneSchedule : ScheduleItem
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun getWeek(groupName : String){
-
+        //_isLoading.value = false
         viewModelScope.launch {
             val itemList = scheduleRepository.getWeek(groupName)
             if(itemList.isEmpty()){
@@ -65,17 +55,22 @@ class ScheduleViewModel @Inject constructor(
             }else{
                 _item.value = itemList
             }
+            //_isLoading.value = true
         }
     }
 
-    fun getScheduleById(id : Int){
+ /*   fun getScheduleById(id : Int){
 
         viewModelScope.launch {
 
             mOneSchedule = scheduleRepository.getScheduleById(id)
             _oneSchedule.value = mOneSchedule
 
-            Log.d("TAG",""+mOneSchedule)
         }
+    }*/
+
+    fun onRefresh(){
+        Log.d("TAG","onRefresh")
+        getWeek("Haii")
     }
 }

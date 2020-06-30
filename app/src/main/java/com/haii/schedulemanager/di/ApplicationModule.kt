@@ -16,11 +16,13 @@
 
 package com.haii.schedulemanager.di
 
+import android.app.Notification
 import com.haii.schedulemanager.data.DefaultScheduleRepository
 import com.haii.schedulemanager.data.ScheduleRepository
 import com.haii.schedulemanager.data.network.ScheduleModel
 import com.haii.schedulemanager.data.network.ScheduleModelImpl
 import com.haii.schedulemanager.data.network.ScheduleNetwork
+import com.haii.schedulemanager.firebase.NotificationBroadcastReceiver
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -58,7 +60,7 @@ object ApplicationModule {
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
             .addInterceptor(HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY)).build()
+            .setLevel(HttpLoggingInterceptor.Level.BODY)).build()
     }
 
 
@@ -67,7 +69,7 @@ object ApplicationModule {
     @Provides
     fun provideTaskNetwork() : ScheduleNetwork {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.0.35:5000/") //"http://10.0.2.35:5000/"  //10 or 35
+            .baseUrl("http://192.168.0.10:5000/") //"http://10.0.2.35:5000/"  //10 or 35
             .addConverterFactory(GsonConverterFactory.create())
             .client(provideOkhttp())
             .build()

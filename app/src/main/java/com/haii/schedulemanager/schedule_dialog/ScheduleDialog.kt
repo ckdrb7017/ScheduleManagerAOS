@@ -1,6 +1,7 @@
 package com.haii.schedulemanager.schedule_dialog
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.haii.schedulemanager.R
@@ -22,7 +23,10 @@ class ScheduleDialog : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_dialog)
 
-        viewModel.getScheduleById(27)
+        val intent = getIntent()
+        val id = intent.getIntExtra("id",0)
+        Toast.makeText(this,""+id,Toast.LENGTH_LONG).show()
+        viewModel.getScheduleById(id)
 
     }
 

@@ -12,11 +12,20 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/scheduleListView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        app:refreshing="@{viewmodel.isLoading}"
+        app:onRefreshListener="@{() -> viewmodel.onRefresh()}">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/scheduleListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <ProgressBar
         android:id="@+id/progressBar"

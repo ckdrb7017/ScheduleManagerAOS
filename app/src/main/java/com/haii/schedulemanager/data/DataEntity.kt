@@ -13,6 +13,7 @@ data class ScheduleItem(val id: Int = 0,
                        val place: String = "",
                        val title: String = "",
                        val participant :String="",
+                       val isExpanded :Boolean=false,
                        val viewType : Int=0)
 
 
